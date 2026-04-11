@@ -2,6 +2,11 @@
 // INSTAGRAM НА МІЛЬЙОН — main.js
 // ============================================
 
+// --- SCROLL TO TOP ON LOAD ---
+// Prevents Safari/Chrome from restoring last scroll position on reload
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
 // --- TELEGRAM BOT CONFIG ---
 // 1. Відкрий Telegram, знайди @BotFather
 // 2. Відправ /newbot, дай назву та username
