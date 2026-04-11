@@ -88,8 +88,8 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 .logo { font-family: var(--font-head); font-weight: 800; font-size: 1.3rem; display: flex; gap: 6px; z-index: 10; }
 .logo__ig { color: var(--primary); }
 .logo__rest { color: var(--dark); }
-.nav { position: absolute; left: 50%; transform: translateX(-50%); display: flex; gap: 40px; }
-.nav a { font-weight: 600; font-size: 0.95rem; color: var(--text-muted); transition: var(--transition); text-transform: uppercase; white-space: nowrap; }
+.nav { position: absolute; left: 50%; transform: translateX(-50%); display: flex; gap: 24px; }
+.nav a { font-weight: 600; font-size: 0.88rem; color: var(--text-muted); transition: var(--transition); text-transform: uppercase; white-space: nowrap; }
 .nav a:hover { color: var(--dark); }
 .burger { display: none; flex-direction: column; gap: 6px; width: 30px; }
 .burger span { display: block; height: 3px; background-color: var(--dark); border-radius: 3px; }
@@ -473,27 +473,99 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 .reveal.revealed { opacity: 1; transform: translateY(0); }
 .reveal--delay { transition-delay: 0.2s; }
 
-/* ================= MOBILE RESPONSIVE ================= */
+/* ================= RESPONSIVE ================= */
+
+/* --- Large tablets & small laptops (1024–1200px) ---
+   Nav fits but gets tight — reduce gaps */
+@media (max-width: 1200px) {
+    .nav { gap: 16px; }
+    .nav a { font-size: 0.82rem; }
+    .header__inner { height: 72px; }
+}
+
+/* --- Tablets portrait + landscape (768–1024px) --- */
 @media (max-width: 1024px) {
+    /* Hide desktop nav, show burger */
+    .nav, .header__cta { display: none; }
+    .burger { display: flex; }
+
+    /* Hero: single column, centered */
+    .hero__inner { grid-template-columns: 1fr; text-align: center; gap: 32px; padding-top: 20px; }
+    .hero__actions, .hero__trust { justify-content: center; }
+    .hero__visual { max-width: 480px; margin: 0 auto; }
+
+    /* Grids: 2-col on tablet, 1-col on mobile */
+    .grid-2 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    /* Pricing: single column */
     .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
     .pricing-plan--popular { transform: none; }
     .pricing-plan--popular:hover { transform: translateY(-8px); }
+
+    /* Author */
     .author-layout { grid-template-columns: 1fr; }
     .author-image img { min-height: 300px; }
     .author-content { padding: 40px; }
+
+    /* Cases */
+    .cases-placeholder { grid-template-columns: repeat(2, 1fr); }
+
+    /* Value Stack */
+    .value-stack-grid { grid-template-columns: 1fr; gap: 48px; }
+    .vs-offer__new-price { font-size: 4rem; }
 }
 
+/* --- Mobile (up to 768px) --- */
 @media (max-width: 768px) {
-    .nav, .header__cta { display: none; }
-    .burger { display: flex; }
-    .grid-2 { grid-template-columns: 1fr; }
-    .hero__inner { grid-template-columns: 1fr; text-align: center; gap: 32px; padding-top: 20px; }
+    .section { padding: 56px 0; }
+
+    /* Header */
+    .header__inner { height: 64px; }
+    .logo { font-size: 1.1rem; }
+
+    /* Hero */
+    .hero { padding: 40px 0 60px; }
+    .hero__inner { grid-template-columns: 1fr; text-align: center; gap: 24px; padding-top: 0; }
     .hero__actions, .hero__trust { justify-content: center; }
     .hero__actions .btn { width: 100%; }
+    .hero__visual { max-width: 100%; }
+    .stat-card { display: none; }
+
+    /* Grids */
+    .grid-2 { grid-template-columns: 1fr; gap: 20px; }
     .comparison-grid, .cases-placeholder { grid-template-columns: 1fr; }
+
+    /* Value Stack */
+    .value-stack-grid { grid-template-columns: 1fr; gap: 56px; }
+    .vs-offer__new-price { font-size: 3.5rem; }
+    .vs-offer__old-price { font-size: 1.6rem; }
+    .vs-breakdown { padding: 24px; }
+    .vs-offer__card { padding: 40px 24px; }
+
+    /* CTA banner */
     .cta-banner { flex-direction: column; text-align: center; }
+
+    /* Pain cards */
     .pain-card { flex-direction: column; gap: 16px; }
+
+    /* Footer */
     .footer__layout { flex-direction: column; text-align: center; gap: 16px; }
     .footer__contacts { justify-content: center; }
-    .stat-card { display: none; } /* Hide floating stats on mobile for cleaner look */
+
+    /* Section headers */
+    .section-header { margin-bottom: 36px; }
+    h1 { font-size: clamp(1.9rem, 7vw, 2.8rem); }
+    h2 { font-size: clamp(1.5rem, 5vw, 2rem); }
+
+    /* Delegation block icon: hide on very small screens */
+    .delegation-icon-wrap { display: none; }
+}
+
+/* --- Small phones (up to 390px) --- */
+@media (max-width: 390px) {
+    .container { padding: 0 16px; }
+    .btn { padding: 12px 20px; font-size: 0.9rem; }
+    .vs-offer__new-price { font-size: 2.8rem; }
+    .hero__inner { gap: 20px; }
+    .pain-card__num { font-size: 2.5rem; }
 }
