@@ -12,9 +12,9 @@
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
     <script>if('scrollRestoration' in history) history.scrollRestoration='manual';</script>
-    <style>body{opacity:0!important}</style>
+    <style>.is-loading{opacity:0}.is-ready{opacity:1;transition:opacity .2s ease}</style>
 </head>
-<body>
+<body class="is-loading">
 <script>
 (function(){
     function go(){
@@ -22,14 +22,15 @@
         requestAnimationFrame(function(){
             requestAnimationFrame(function(){
                 window.scrollTo(0,0);
-                document.body.style.transition='opacity .2s ease';
-                document.body.style.opacity='1';
+                document.body.className=document.body.className.replace('is-loading','') + ' is-ready';
             });
         });
     }
     if(document.readyState==='complete') go();
     else window.addEventListener('load',go);
     window.addEventListener('pageshow',go);
+    // Safety: always show after 500ms no matter what
+    setTimeout(function(){document.body.className=document.body.className.replace('is-loading','') + ' is-ready'},500);
 })();
 </script>
 <!-- HEADER -->
