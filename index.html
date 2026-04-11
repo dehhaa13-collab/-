@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Instagram на Мільйон — Клієнти через Instagram для б'юті-майстра">
+    <title>Instagram на Мільйон — Клієнти через Instagram</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+    <div class="container header__inner">
+        <a href="#hero" class="logo">
+            <span class="logo__ig">Instagram</span><span class="logo__rest"> на Мільйон</span>
+        </a>
+        <nav class="nav">
+            <a href="#for-who">Для кого</a>
+            <a href="#program">Програма</a>
+            <a href="#pricing">Тарифи</a>
+            <a href="#author">Автор</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+        <button class="btn btn--primary header__cta" onclick="openModal('call')">Безкоштовна діагностика</button>
+        <button class="burger" id="burger-btn" onclick="document.body.classList.toggle('nav-open')">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+    <div class="mobile-nav__overlay" onclick="document.body.classList.remove('nav-open')"></div>
+    <div class="mobile-nav__panel">
+        <button class="modal-close mobile-nav-close" onclick="document.body.classList.remove('nav-open')">✕</button>
+        <nav>
+            <a href="#for-who" onclick="document.body.classList.remove('nav-open')">Для кого</a>
+            <a href="#program" onclick="document.body.classList.remove('nav-open')">Програма</a>
+            <a href="#pricing" onclick="document.body.classList.remove('nav-open')">Тарифи</a>
+            <a href="#author" onclick="document.body.classList.remove('nav-open')">Автор</a>
+            <a href="#faq" onclick="document.body.classList.remove('nav-open')">FAQ</a>
+        </nav>
+        <button class="btn btn--primary" onclick="document.body.classList.remove('nav-open'); openModal('call')">Безкоштовна діагностика</button>
+    </div>
+</div>
+
+<!-- ====== HERO ====== -->
+<section class="hero" id="hero">
+    <div class="container hero__inner">
+        <div class="hero__content reveal">
+            <div class="scarcity-badge">
+                <span class="pulse-dot"></span>
+                <span class="scarcity-text">Залишилось <strong id="spots-count">8</strong> <strong>з 25 місць</strong> на ведення</span>
+            </div>
+            <h1 class="hero__title">
+                Твій Instagram<br>
+                <span class="highlight">приводить клієнтів</span><br>
+                поки ти працюєш
+            </h1>
+            <p class="hero__subtitle">
+                <strong>Комплексний сервіс</strong> для б'юті-майстрів в Україні та Європі. Ми беремо на себе сценарії, монтаж та просування. Тобі залишається лише 15 хвилин зйомки на тиждень.
+            </p>
+            <div class="hero__actions">
+                <button class="btn btn--primary btn--lg" onclick="openModal('call')">Отримати безкоштовну діагностику</button>
+                <button class="btn btn--ghost btn--lg" onclick="openModal('zoom')">Запланувати Zoom</button>
+            </div>
+            <div class="hero__trust">
+                <span>✓ 10 хвилин твого часу</span>
+                <span>✓ Результат вже у 1-й місяць</span>
+            </div>
+        </div>
+        <div class="hero__visual reveal reveal--delay">
+            <div class="hero__image-wrapper">
+                <img src="assets/img/hero.png" alt="Instagram маркетинг для б'юті-майстра">
+                <div class="stat-card stat-card--bottom" style="right: auto; left: 50%; transform: translateX(-50%); width: max-content; padding: 16px 24px;">
+                    <strong style="font-size: 1.2rem;">Гарантуємо від 2 000 переглядів</strong>
+                    <span>на кожному відео завдяки алгоритмам</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== URGENCY BAR ====== -->
+<div class="urgency-bar">
+    <div class="container urgency-bar__inner">
+        <div class="urgency-bar__text">
+            <span>⏰ Безкоштовна діагностика закінчується через:</span>
+        </div>
+        <div class="countdown" id="countdown">
+            <div class="time-block"><span id="cd-h">00</span><small>год</small></div>
+            <div class="time-block"><span id="cd-m">00</span><small>хв</small></div>
+            <div class="time-block"><span id="cd-s">00</span><small>сек</small></div>
+        </div>
+    </div>
+</div>
+
+<!-- ====== FOR WHO ====== -->
+<section class="section bg-white" id="for-who">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title">Цей сервіс для тебе, <span class="highlight">якщо ти:</span></h2>
+        </div>
+        <div class="grid-2">
+            <!-- Card 1 -->
+            <div class="pain-card reveal">
+                <div class="pain-card__num">01</div>
+                <div class="pain-card__content">
+                    <h3 class="pain-card__title">Б'юті-майстер з волосся або кератину</h3>
+                    <p class="pain-card__desc">Ти орендуєш крісло в Україні або Європі і хочеш, щоб клієнти знаходили тебе самі, без постійної залежності від сарафанного радіо.</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="pain-card reveal">
+                <div class="pain-card__num">02</div>
+                <div class="pain-card__content">
+                    <h3 class="pain-card__title">Не маєш часу на контент</h3>
+                    <p class="pain-card__desc">Після робочого дня ти виснажена. Писати сценарії та монтувати відео просто немає сил. Ми повністю забираємо цю рутину.</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="pain-card reveal">
+                <div class="pain-card__num">03</div>
+                <div class="pain-card__content">
+                    <h3 class="pain-card__title">Боїшся підвищувати ціни</h3>
+                    <p class="pain-card__desc">Клієнти в Європі платять втричі більше майстрам, які виглядають як преміум-бренд. Ми перетворимо твій профіль на такий бренд.</p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="pain-card reveal">
+                <div class="pain-card__num">04</div>
+                <div class="pain-card__content">
+                    <h3 class="pain-card__title">Прагнеш стабільності</h3>
+                    <p class="pain-card__desc">Зараз бувають дні без жодного запису. Системний Instagram гарантує розклад, заповнений на місяць вперед.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== PROGRAM ====== -->
+<section class="section bg-light" id="program">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title"><span class="highlight">ПРОГРАМА</span> СИСТЕМНОЇ РОБОТИ</h2>
+            <p class="section-subtitle">Чотири впевнені кроки до стабільного потоку клієнтів</p>
+        </div>
+        <div class="grid-2">
+            
+            <!-- Step 1 -->
+            <div class="edu-card reveal">
+                <div class="edu-card__badge">
+                    <span class="number">01</span>
+                    <span class="text">КРОК</span>
+                </div>
+                <div class="edu-card__content">
+                    <h3 class="edu-card__title"><span class="red-text">РЕЗУЛЬТАТ:</span> Стратегія та позиціонування</h3>
+                    <ul class="check-list">
+                        <li>Як зрозуміти, чого насправді хоче ідеальний клієнт у твоїй ніші?</li>
+                        <li>Як відбудуватися від конкурентів, щоб про знижки навіть не питали?</li>
+                        <li>Як встановити прайс, з яким погоджуються без торгів?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="edu-card reveal">
+                <div class="edu-card__badge">
+                    <span class="number">02</span>
+                    <span class="text">КРОК</span>
+                </div>
+                <div class="edu-card__content">
+                    <h3 class="edu-card__title"><span class="red-text">РЕЗУЛЬТАТ:</span> Готові сценарії</h3>
+                    <ul class="check-list">
+                        <li>Як говорити про свою роботу, щоб викликати бажання негайно записатись?</li>
+                        <li>Які теми приносять клієнтів, а які лише лайки від інших майстрів?</li>
+                        <li>Зйомка без вигорання — ми даємо чіткий план дій.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="edu-card reveal">
+                <div class="edu-card__badge">
+                    <span class="number">03</span>
+                    <span class="text">КРОК</span>
+                </div>
+                <div class="edu-card__content">
+                    <h3 class="edu-card__title"><span class="red-text">РЕЗУЛЬТАТ:</span> Професійний монтаж</h3>
+                    <ul class="check-list">
+                        <li>Чи може звичайне відео кератину отримати 100k переглядів?</li>
+                        <li>Монтаж, що утримує увагу з першої секунди (динамічні субтитри).</li>
+                        <li>Готовий високоякісний контент без жодних зусиль з твого боку.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="edu-card reveal">
+                <div class="edu-card__badge">
+                    <span class="number">04</span>
+                    <span class="text">КРОК</span>
+                </div>
+                <div class="edu-card__content">
+                    <h3 class="edu-card__title"><span class="red-text">РЕЗУЛЬТАТ:</span> Цільова реклама</h3>
+                    <ul class="check-list">
+                        <li>Налаштування таргетованої реклами саме на платоспроможну аудиторію.</li>
+                        <li>Чому органічне охоплення більше не працює для стабільного заробітку?</li>
+                        <li>Чітка окупність: кожна гривня повертається x5+.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ====== COMPARISON ====== -->
+<section class="section bg-white" id="comparison">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title">МИ ПРОТИ <span class="highlight">РОБИТИ САМОСТІЙНО</span></h2>
+        </div>
+        <div class="comparison-grid reveal">
+            <div class="compare-card compare-card--diy">
+                <div class="compare-card__header">
+                    <h3><span>✗</span> Самостійна робота</h3>
+                </div>
+                <div class="compare-card__body">
+                    <ul>
+                        <li>✗ Ти одна: генератор ідей, оператор, монтажер</li>
+                        <li>✗ 1-2 відео, знятих хаотично і без системи</li>
+                        <li>✗ Витрачаєш години часу без результату</li>
+                        <li>✗ Не розумієш, як привабити іноземних клієнтів</li>
+                        <li>✗ Місяці простою і нестабільний дохід</li>
+                        <li>✗ Швидке вигорання від ведення соцмереж</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="compare-card compare-card--pro">
+                <div class="compare-card__header">
+                    <h3><span>✓</span> Сервіс "INST на Мільйон"</h3>
+                </div>
+                <div class="compare-card__body">
+                    <ul>
+                        <li>✓ Команда з 5 спеціалістів: продюсер, сценарист, монтажер, дизайнер, таргетолог</li>
+                        <li>✓ 10–15 високоякісних відео на місяць</li>
+                        <li>✓ Лише 15 хвилин зйомки на тиждень</li>
+                        <li>✓ Стратегія саме під кератин/волосся</li>
+                        <li>✓ Працюючі інструменти європейського ринку</li>
+                        <li>✓ Гарантовано системний підхід</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== PRICING ====== -->
+<section class="section bg-light" id="pricing">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title">ОБЕРІТЬ ВАШ <span class="highlight">ТАРИФ</span></h2>
+            <p class="section-subtitle">Ціна цілої команди менша, ніж вартість одного SMM-спеціаліста</p>
+        </div>
+        <div class="pricing-grid reveal">
+            
+            <!-- Tier 1 -->
+            <div class="pricing-plan">
+                <p class="pricing-plan__tier">СТАРТ</p>
+                <h3 class="pricing-plan__name">Тест</h3>
+                <div class="pricing-plan__price">$49</div>
+                <ul class="pricing-plan__features">
+                    <li><span class="icon-ok">✓</span> 5 готових відео</li>
+                    <li><span class="icon-ok">✓</span> Робота сценариста</li>
+                    <li><span class="icon-ok">✓</span> Професійний монтаж</li>
+                    <li class="disabled"><span class="icon-no">✗</span> Особистий продюсер</li>
+                    <li class="disabled"><span class="icon-no">✗</span> Послуги таргетолога</li>
+                    <li class="disabled"><span class="icon-no">✗</span> AI Аватар</li>
+                </ul>
+                <button class="btn btn--outline btn--full" onclick="openModal('call', 'Тест')">Вибрати Тест</button>
+            </div>
+
+            <!-- Tier 2 (Popular) -->
+            <div class="pricing-plan pricing-plan--popular">
+                <div class="pricing-plan__badge">Найчастіший вибір</div>
+                <p class="pricing-plan__tier">ПРОДАКШН</p>
+                <h3 class="pricing-plan__name">Стандарт</h3>
+                <div class="pricing-plan__price">$99</div>
+                <ul class="pricing-plan__features">
+                    <li><span class="icon-ok">✓</span> 10 готових відео</li>
+                    <li><span class="icon-ok">✓</span> Сценарист та монтажер</li>
+                    <li><span class="icon-ok">✓</span> <strong>Особистий продюсер</strong></li>
+                    <li><span class="icon-ok">✓</span> <strong>Послуги таргетолога</strong></li>
+                    <li class="highlight-item"><span class="icon-ok">✓</span> <strong>Бонус: 2 міс. у Bless Community</strong></li>
+                    <li class="highlight-item"><span class="icon-ok">✓</span> <strong>Бонуси від партнерів Luxliss Pro</strong></li>
+                    <li class="disabled"><span class="icon-no">✗</span> AI Аватар та Рекламний бюджет</li>
+                </ul>
+                <button class="btn btn--primary btn--full" onclick="openModal('call', 'Стандарт')">Вибрати Стандарт</button>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="pricing-plan">
+                <p class="pricing-plan__tier">VIP ДОСТУП</p>
+                <h3 class="pricing-plan__name">Про</h3>
+                <div class="pricing-plan__price">$249</div>
+                <ul class="pricing-plan__features">
+                    <li><span class="icon-ok">✓</span> 15 готових відео</li>
+                    <li class="highlight-item"><span class="icon-ok">✓</span> <strong>Створення AI Аватара</strong></li>
+                    <li class="highlight-item"><span class="icon-ok">✓</span> <strong>$100 бюджету включено</strong></li>
+                    <li><span class="icon-ok">✓</span> Повний запуск під ключ</li>
+                    <li class="highlight-item"><span class="icon-ok">✓</span> <strong>Бонус: 6 міс. у Bless Community</strong></li>
+                    <li class="highlight-item"><span class="icon-ok">✓</span> <strong>VIP-Бонуси від Luxliss Pro</strong></li>
+                </ul>
+                <button class="btn btn--outline btn--full" onclick="openModal('call', 'Про')">Вибрати Про</button>
+            </div>
+
+        </div>
+
+        <div class="cta-banner reveal">
+            <div class="cta-banner__content">
+                <span class="badge" style="background-color: var(--red); color: white;">Той самий ТОП-Офер 🔥</span>
+                <h3>Безкоштовна Стратегічна Діагностика</h3>
+                <p>
+                    <strong>Що ти отримаєш:</strong> Повний розбір твого профілю + план виходу в ТОП майстрів + <span class="highlight">Доступ до лекцій: «Фішки продажів Luxliss» та «Telegram для б'юті»</span> + Гайд по мікрофонам!<br><br>
+                    <span style="text-decoration: line-through; opacity: 0.6;">Звичайна ціна: $150</span> <span style="font-weight: 800; color: var(--red);">→ Сьогодні: 0 грн</span>
+                </p>
+            </div>
+            <div class="cta-banner__actions">
+                <button class="btn btn--primary btn--lg" onclick="openModal('call')">Забронювати діагностику</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== CASES PLACEHOLDER ====== -->
+<section class="section bg-white" id="cases">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title">Результати <span class="highlight">наших клієнтів</span></h2>
+            <p class="section-subtitle">Майстри, які вже примножили свій дохід (Блок в розробці)</p>
+        </div>
+        <div class="cases-placeholder reveal">
+            <div class="case-box">Кейс в процесі оформлення 📸</div>
+            <div class="case-box">Кейс в процесі оформлення 📸</div>
+            <div class="case-box">Кейс в процесі оформлення 📸</div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== AUTHOR ====== -->
+<section class="section author-section" id="author">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title">Автор <span class="highlight">Програми</span></h2>
+        </div>
+        <div class="author-layout reveal">
+            <div class="author-image">
+                <img src="assets/img/author.png" alt="Іван Врабій">
+            </div>
+            <div class="author-content">
+                <span class="author-tag">Сервіс засновано професіоналом</span>
+                <h3 class="author-name">Іван Врабій</h3>
+                <ul class="author-list">
+                    <li>Майстер-перукар з 2001 року.</li>
+                    <li>Власник салонного бізнесу з 2003 року.</li>
+                    <li>Автор відомих курсів: «Майстер нового покоління», «Тритментолог», «Beauty-підприємець».</li>
+                    <li>Спікер міжнародних beauty-форумів, суддя чемпіонатів.</li>
+                    <li>Бренд-технолог топової компанії Luxliss Professional.</li>
+                </ul>
+                <button class="btn btn--primary btn--lg" style="margin-top:2rem;" onclick="openModal('call')">Записатись на розбір до команди Івана</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="section bg-light" id="faq">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title">Часті <span class="highlight">Запитання</span></h2>
+        </div>
+        <div class="faq-container reveal">
+            <div class="faq-item">
+                <button class="faq-btn">Скільки часу на тиждень потрібно від мене? <span class="faq-icon">+</span></button>
+                <div class="faq-answer">
+                    <p>Не більше 15 хвилин на тиждень. Ми даємо детальні сценарії — ти просто читаєш текст на камеру. А якщо використаєш AI Аватар (у тарифі PRO), взагалі не доведеться знімати.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-btn">Чи працюєте ви з майстрами в Європі? <span class="faq-icon">+</span></button>
+                <div class="faq-answer">
+                    <p>Так! Наша ключова експертиза — допомога б'юті-майстрам (особливо українцям) адаптуватися та знаходити платоспроможну аудиторію в Європі за місцевими високими прайсами.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-btn">Коли я побачу нових клієнтів? <span class="faq-icon">+</span></button>
+                <div class="faq-answer">
+                    <p>Зазвичай перші заявки надходять вже на 2-ий тиждень після запуску реклами. На 2-ий місяць формується стабільний прогнозований запис.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== CTA ====== -->
+<section class="final-cta section bg-dark">
+    <div class="container text-center reveal">
+        <h2 class="final-cta__title">Робіть волосся, а <span class="highlight">клієнтів знайдемо ми</span></h2>
+        <p class="final-cta__subtitle">Діагностика абсолютно безкоштовна та ні до чого не зобов'язує.</p>
+        <div class="final-cta__actions">
+            <button class="btn btn--primary btn--lg" onclick="openModal('call')">Отримати діагностику безкоштовно</button>
+            <button class="btn btn--ghost btn--lg" onclick="openModal('zoom')" style="color: #fff; border-color: #fff;">Запланувати Zoom зустріч</button>
+        </div>
+    </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+    <div class="container footer__layout">
+        <div class="footer__logo">
+            <span class="logo__ig">Instagram</span><span class="logo__rest" style="color:white;"> на Мільйон</span>
+        </div>
+        <p class="footer__cp">© 2026. Всі права захищені.</p>
+        <div class="footer__contacts">
+            <a href="https://t.me/help_team_Vrabii" target="_blank">Telegram: @help_team_Vrabii</a>
+            <a href="tel:+40763954998">+40 763 954 998</a>
+        </div>
+    </div>
+</footer>
+
+<!-- ====== MODAL ====== -->
+<div class="modal" id="booking-modal">
+    <div class="modal__overlay" onclick="closeModal()"></div>
+    <div class="modal__content">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        
+        <div class="modal__tabs">
+            <div class="modal__slider" id="modal-slider"></div>
+            <button class="modal-tab active" id="tab-call" onclick="switchModalTab('call')">📞 Дзвінок</button>
+            <button class="modal-tab" id="tab-zoom" onclick="switchModalTab('zoom')">💻 Zoom</button>
+        </div>
+
+        <div class="modal__panes-wrapper">
+            <!-- FORM: CALL -->
+            <div class="modal-pane active" id="pane-call">
+                <h3 class="modal-title">Безкоштовна діагностика</h3>
+                <p class="modal-sub">Наш менеджер зателефонує вам, щоб надати консультацію та обговорити можливі умови співпраці.</p>
+                
+                <form id="call-form" onsubmit="handleCallSubmit(event)">
+                    <div class="form-group">
+                        <label>Ваше ім'я</label>
+                        <input type="text" id="client-name" class="form-input" placeholder="Олена" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Номер телефону</label>
+                        <input type="tel" id="client-phone" class="form-input" placeholder="+380... або +48..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Зручний час дзвінку</label>
+                        <div class="time-chips">
+                            <label class="time-chip">
+                                <input type="radio" name="client_time" value="Зранку (09:00 - 12:00)">
+                                <span class="chip-content">
+                                    <strong>Зранку</strong>
+                                    <small>09:00 - 12:00</small>
+                                </span>
+                            </label>
+                            <label class="time-chip">
+                                <input type="radio" name="client_time" value="Вдень (12:00 - 16:00)" checked>
+                                <span class="chip-content">
+                                    <strong>Вдень</strong>
+                                    <small>12:00 - 16:00</small>
+                                </span>
+                            </label>
+                            <label class="time-chip">
+                                <input type="radio" name="client_time" value="Ввечері (16:00 - 19:00)">
+                                <span class="chip-content">
+                                    <strong>Ввечері</strong>
+                                    <small>16:00 - 19:00</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full btn--lg">Підтвердити заявку</button>
+                </form>
+            </div>
+
+            <!-- PANE: ZOOM -->
+            <div class="modal-pane" id="pane-zoom">
+                <h3 class="modal-title">Запланувати Zoom</h3>
+                <p class="modal-sub">Оберіть вільний слот у нашому календарі, щоб узгодити деталі відеодзвінка.</p>
+                <div style="margin: 2rem 0;">
+                    <a href="https://calendar.app.google/7xYBxzE6suDjGAGP8" target="_blank" class="btn btn--primary btn--full btn--lg" style="text-align: center;">📅 Відкрити календар Google</a>
+                </div>
+                <p class="modal-sub" style="text-align: center; font-size: 0.9rem;">
+                    Або пишіть напряму: <br>
+                    <a href="https://t.me/help_team_Vrabii" target="_blank" style="color:var(--yellow); font-weight:600;">@help_team_Vrabii</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
