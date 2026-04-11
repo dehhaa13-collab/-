@@ -11,18 +11,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
-    <script>
-        if('scrollRestoration' in history) history.scrollRestoration='manual';
-        window.scrollTo(0,0);
-    </script>
-    <style>body{opacity:0}</style>
+    <script>if('scrollRestoration' in history) history.scrollRestoration='manual';</script>
+    <style>body{opacity:0!important}</style>
 </head>
 <body>
 <script>
-    window.scrollTo(0,0);
-    function _reveal(){window.scrollTo(0,0);document.body.style.transition='opacity .15s';document.body.style.opacity='1'}
-    window.addEventListener('pageshow',function(){window.scrollTo(0,0);_reveal()});
-    window.addEventListener('load',function(){setTimeout(_reveal,30)});
+(function(){
+    function go(){
+        window.scrollTo(0,0);
+        requestAnimationFrame(function(){
+            requestAnimationFrame(function(){
+                window.scrollTo(0,0);
+                document.body.style.transition='opacity .2s ease';
+                document.body.style.opacity='1';
+            });
+        });
+    }
+    if(document.readyState==='complete') go();
+    else window.addEventListener('load',go);
+    window.addEventListener('pageshow',go);
+})();
 </script>
 <!-- HEADER -->
 <header class="header" id="header">
