@@ -14,13 +14,16 @@
     <script>
         if('scrollRestoration' in history) history.scrollRestoration='manual';
         window.scrollTo(0,0);
-        document.addEventListener('DOMContentLoaded',function(){window.scrollTo(0,0)});
-        window.addEventListener('pageshow',function(){window.scrollTo(0,0)});
-        window.addEventListener('load',function(){window.scrollTo(0,0);setTimeout(function(){window.scrollTo(0,0)},50)});
     </script>
+    <style>body{opacity:0}</style>
 </head>
 <body>
-
+<script>
+    window.scrollTo(0,0);
+    function _reveal(){window.scrollTo(0,0);document.body.style.transition='opacity .15s';document.body.style.opacity='1'}
+    window.addEventListener('pageshow',function(){window.scrollTo(0,0);_reveal()});
+    window.addEventListener('load',function(){setTimeout(_reveal,30)});
+</script>
 <!-- HEADER -->
 <header class="header" id="header">
     <div class="container header__inner">
