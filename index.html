@@ -11,28 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
-    <script>if('scrollRestoration' in history) history.scrollRestoration='manual';</script>
-    <style>.is-loading{opacity:0}.is-ready{opacity:1;transition:opacity .2s ease}</style>
+    <script>
+        if('scrollRestoration' in history) history.scrollRestoration='manual';
+        window.addEventListener('beforeunload',function(){window.scrollTo(0,0)});
+    </script>
 </head>
-<body class="is-loading">
-<script>
-(function(){
-    function go(){
-        window.scrollTo(0,0);
-        requestAnimationFrame(function(){
-            requestAnimationFrame(function(){
-                window.scrollTo(0,0);
-                document.body.className=document.body.className.replace('is-loading','') + ' is-ready';
-            });
-        });
-    }
-    if(document.readyState==='complete') go();
-    else window.addEventListener('load',go);
-    window.addEventListener('pageshow',go);
-    // Safety: always show after 500ms no matter what
-    setTimeout(function(){document.body.className=document.body.className.replace('is-loading','') + ' is-ready'},500);
-})();
-</script>
+<body>
 <!-- HEADER -->
 <header class="header" id="header">
     <div class="container header__inner">
