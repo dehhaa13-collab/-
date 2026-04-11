@@ -163,16 +163,16 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     position: relative;
     min-height: 480px;
     background: transparent;
-    display: flex; align-items: center; justify-content: center; gap: 20px;
+    display: flex; align-items: center; justify-content: center; gap: 16px;
 }
 .hero-phone {
-    position: relative; width: 45%; max-width: 260px;
+    position: relative; width: 48%; max-width: 310px;
     border-radius: 20px; box-shadow: var(--shadow-md);
     border: 6px solid var(--white); background: var(--white);
     transform: rotate(-2deg); transition: transform 0.3s ease;
 }
 .hero-phone--after {
-    transform: scale(1.05) rotate(2deg); z-index: 2;
+    transform: scale(1.08) rotate(2deg); z-index: 2;
     box-shadow: 0 20px 40px rgba(22, 163, 74, 0.2); border-color: #f8fafc;
 }
 .hero-phone--before {
@@ -182,7 +182,7 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     border-radius: 12px; width: 100%; height: auto; display: block;
 }
 .hero-arrow {
-    font-size: 2.5rem; color: var(--text-muted); font-weight: 900; z-index: 10;
+    font-size: 1.6rem; color: var(--text-muted); font-weight: 900; z-index: 10;
 }
 .hero-phone-badge {
     position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
