@@ -116,7 +116,7 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
 
 /* ================= HERO ================= */
-.hero { padding: 60px 0 80px; }
+.hero { padding: 80px 0 80px; }
 .hero__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 
 /* Hero content visible immediately — no layout shift on first paint */
