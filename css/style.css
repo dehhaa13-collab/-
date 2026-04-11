@@ -387,12 +387,13 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 
 /* ================= CASES ================= */
 
-.cases-placeholder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.case-box {
-    background-color: var(--light); border-radius: var(--radius); height: 200px;
-    display: flex; align-items: center; justify-content: center;
-    border: 2px dashed var(--border); color: var(--text-muted); font-weight: 500; text-align: center;
-}
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+.ba-card { position: relative; border-radius: 20px; overflow: hidden; background: #fafafa; border: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+.ba-card__badge { display: inline-block; padding: 8px 20px; border-radius: 100px; font-weight: 700; font-size: 0.9rem; margin-bottom: 24px; text-transform: uppercase; }
+.ba-card__badge--red { background: rgba(230,57,70,0.1); color: var(--red); }
+.ba-card__badge--green { background: rgba(22,163,74,0.1); color: #16a34a; }
+.ba-card__img { width: 100%; max-width: 320px; border-radius: 16px; display: block; margin: 0 auto 24px; box-shadow: var(--shadow-sm); border: 4px solid var(--white); }
+.ba-card__desc { font-weight: 500; color: var(--dark-alt); line-height: 1.6; text-align: left; margin: 0 auto; max-width: 320px; }
 
 /* ================= AUTHOR ================= */
 .author-layout { display: grid; grid-template-columns: 400px 1fr; gap: 48px; align-items: center; background-color: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--border); }
@@ -527,7 +528,7 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     .author-content { padding: 40px; }
 
     /* Cases */
-    .cases-placeholder { grid-template-columns: repeat(2, 1fr); }
+    .ba-grid { gap: 24px; }
 
     /* Value Stack */
     .value-stack-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -552,7 +553,7 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 
     /* Grids */
     .grid-2 { grid-template-columns: 1fr; gap: 20px; }
-    .comparison-grid, .cases-placeholder { grid-template-columns: 1fr; }
+    .comparison-grid, .ba-grid { grid-template-columns: 1fr; }
 
     /* Value Stack */
     .value-stack-grid { grid-template-columns: 1fr; gap: 56px; }
