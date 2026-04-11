@@ -192,7 +192,7 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 /* ================= URGENCY BAR ================= */
 .urgency-bar { background-color: var(--yellow); color: var(--dark); padding: 14px 0; z-index: 10; position: relative; box-shadow: 0 4px 20px rgba(251,177,36,0.3); }
 .urgency-bar__inner { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
-@media(min-width: 768px) { .urgency-bar__inner { flex-direction: row; gap: 24px; } }
+@media(min-width: 768px) { .urgency-bar__inner { flex-direction: row; justify-content: center; align-items: center; gap: 24px; } }
 .urgency-bar__text { font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
 .countdown { display: flex; gap: 8px; }
 .time-block { display: flex; align-items: baseline; justify-content: center; background-color: var(--dark); color: var(--yellow); padding: 6px 14px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); min-width: 60px; }
@@ -560,6 +560,7 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 /* --- Mobile (up to 768px) --- */
 @media (max-width: 768px) {
     .section { padding: 56px 0; }
+    .section-header { margin-bottom: 32px; }
 
     /* Header */
     .header__inner { height: 64px; }
