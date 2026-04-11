@@ -141,7 +141,7 @@ async function sendTelegramNotification(name, phone, callTime) {
 
     const now = new Date().toLocaleString('uk-UA', { timeZone: 'Europe/Kyiv' });
     const text = `
-🔔 *НОВА ЗАЯВКА — Instagram на Мільйон*
+🔔 *НОВА ЗАЯВКА — Фабрика Контенту*
 
 👤 Ім'я: *${name}*
 📞 Телефон: *${phone}*
