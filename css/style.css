@@ -150,18 +150,36 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 
 .hero__image-wrapper {
     position: relative;
-    /* Reserve space before image loads → prevents layout shift (CLS) */
-    min-height: 400px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #fff3e0 100%);
-    border-radius: var(--radius-lg);
+    min-height: 480px;
+    background: transparent;
+    display: flex; align-items: center; justify-content: center; gap: 20px;
 }
-.hero__image-wrapper img {
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    width: 100%;
-    height: auto;
-    display: block;
+.hero-phone {
+    position: relative; width: 45%; max-width: 260px;
+    border-radius: 20px; box-shadow: var(--shadow-md);
+    border: 6px solid var(--white); background: var(--white);
+    transform: rotate(-2deg); transition: transform 0.3s ease;
 }
+.hero-phone--after {
+    transform: scale(1.05) rotate(2deg); z-index: 2;
+    box-shadow: 0 20px 40px rgba(22, 163, 74, 0.2); border-color: #f8fafc;
+}
+.hero-phone--before {
+    opacity: 0.85; filter: grayscale(10%);
+}
+.hero-phone img {
+    border-radius: 12px; width: 100%; height: auto; display: block;
+}
+.hero-arrow {
+    font-size: 2.5rem; color: var(--text-muted); font-weight: 900; z-index: 10;
+}
+.hero-phone-badge {
+    position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+    padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 0.75rem;
+    white-space: nowrap; z-index: 10; box-shadow: var(--shadow-sm);
+}
+.hero-phone-badge--red { background: var(--white); color: var(--red); border: 2px solid var(--red); }
+.hero-phone-badge--green { background: #16a34a; color: var(--white); border: 2px solid var(--white); box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3); }
 .stat-card {
     position: absolute; background: var(--white); padding: 12px 20px; border-radius: 12px;
     box-shadow: var(--shadow-md); display: flex; flex-direction: column; align-items: center;
@@ -511,6 +529,10 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 
     /* Hero: single column, centered */
     .hero__inner { grid-template-columns: 1fr; text-align: center; gap: 32px; padding-top: 20px; }
+    .hero-arrow { transform: rotate(90deg); margin: 10px 0; }
+    .hero__image-wrapper { flex-direction: column; }
+    .hero-phone { width: 75%; max-width: 320px; transform: none !important; }
+    .hero-phone--after { transform: scale(1.02) !important; }
     .hero__actions, .hero__trust { justify-content: center; }
     .hero__visual { max-width: 480px; margin: 0 auto; }
 
