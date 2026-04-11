@@ -231,7 +231,67 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 }
 .cta-banner .badge { display: inline-block; background-color: var(--primary); padding: 4px 12px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 12px; }
 
+/* ================= VALUE STACK ================= */
+.value-stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+
+.vs-breakdown { display: flex; flex-direction: column; gap: 0; }
+.vs-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 16px 0; border-bottom: 1px solid var(--border);
+}
+.vs-item:first-child { border-top: 1px solid var(--border); }
+.vs-label { font-weight: 600; font-size: 0.95rem; color: var(--dark); white-space: nowrap; }
+.vs-dots { flex: 1; border-bottom: 2px dotted var(--border); margin: 0 8px; }
+.vs-price { font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; color: var(--red); white-space: nowrap; }
+.vs-price small { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); margin-left: 2px; }
+
+.vs-total-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 16px; padding: 16px 20px; border-radius: 12px;
+    background-color: rgba(230,57,70,0.06); border: 2px solid rgba(230,57,70,0.2);
+}
+.vs-total-bar span:first-child { font-weight: 700; color: var(--dark); font-size: 1rem; }
+.vs-total-price { font-family: var(--font-head); font-size: 1.4rem; font-weight: 900; color: var(--text-muted); }
+.vs-total-price small { font-size: 0.75rem; }
+.vs-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; padding-left: 4px; }
+
+.vs-offer { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.vs-offer__badge {
+    background-color: var(--primary); color: var(--dark);
+    font-family: var(--font-head); font-weight: 800; font-size: 0.85rem;
+    letter-spacing: 0.1em; padding: 10px 28px; border-radius: 100px;
+    text-transform: uppercase; box-shadow: 0 4px 16px rgba(251,177,36,0.4);
+}
+.vs-offer__card {
+    width: 100%; background: var(--white); border-radius: var(--radius-lg);
+    border: 2px solid var(--primary); padding: 36px 32px; text-align: center;
+    box-shadow: 0 20px 50px rgba(251,177,36,0.15);
+}
+.vs-offer__label { font-weight: 600; color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
+.vs-offer__price-wrap { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 8px; }
+.vs-offer__old-price { font-family: var(--font-head); font-size: 2rem; font-weight: 800; color: var(--text-muted); text-decoration: line-through; opacity: 0.6; }
+.vs-offer__arrow { font-size: 1.5rem; color: var(--primary); font-weight: 900; }
+.vs-offer__new-price {
+    font-family: var(--font-head); font-size: 4rem; font-weight: 900; color: var(--dark);
+    line-height: 1; text-shadow: 0 0 40px rgba(251,177,36,0.5);
+}
+.vs-offer__sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+.vs-offer__savings {
+    background: linear-gradient(135deg, rgba(251,177,36,0.12), rgba(251,177,36,0.05));
+    border: 1px solid rgba(251,177,36,0.3); border-radius: 10px;
+    padding: 12px 20px; font-size: 0.95rem; color: var(--dark);
+    margin-bottom: 24px;
+}
+.vs-offer__savings strong { color: var(--primary); font-size: 1.1rem; }
+
+@media (max-width: 768px) {
+    .value-stack-grid { grid-template-columns: 1fr; }
+    .vs-label { white-space: normal; font-size: 0.85rem; }
+    .vs-offer__new-price { font-size: 3rem; }
+}
+
 /* ================= CASES ================= */
+
 .cases-placeholder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .case-box {
     background-color: var(--light); border-radius: var(--radius); height: 200px;
