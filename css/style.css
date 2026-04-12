@@ -345,8 +345,8 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     border: 1px dashed rgba(230,57,70,0.3);
 }
 .vs-total-bar span:first-child { font-weight: 800; color: var(--red); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;}
-.vs-total-price { font-family: var(--font-head); font-size: 1.8rem; font-weight: 900; color: var(--red); text-decoration: line-through; opacity: 0.8;}
-.vs-total-price small { font-size: 0.8rem; }
+.vs-total-price { font-family: var(--font-head); font-size: 1.6rem; font-weight: 900; color: var(--red); text-decoration: line-through; opacity: 0.8; white-space: nowrap;}
+.vs-total-price small { font-size: 0.75rem; }
 .vs-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 12px; padding-left: 4px; opacity: 0.7; }
 
 .vs-offer {
