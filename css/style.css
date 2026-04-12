@@ -747,3 +747,11 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
         max-width: 650px;
     }
 }
+
+.timeline-note {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    opacity: 0.75;
+}
