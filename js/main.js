@@ -31,49 +31,10 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// --- COUNTDOWN TIMER ---
-function updateCountdown() {
-    const el = document.getElementById('countdown');
-    if (!el) return;
 
-    // Таймер: 48 годин від першого завантаження сторінки
-    const STORAGE_KEY = 'imm_deadline';
-    let deadline = localStorage.getItem(STORAGE_KEY);
-    if (!deadline) {
-        deadline = Date.now() + 48 * 60 * 60 * 1000;
-        localStorage.setItem(STORAGE_KEY, deadline);
-    }
-
-    const interval = setInterval(() => {
-        const diff = Math.max(0, deadline - Date.now());
-        const h = Math.floor(diff / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        el.innerHTML = `
-            <span>${String(h).padStart(2,'0')}<small>год</small></span>
-            <span>${String(m).padStart(2,'0')}<small>хв</small></span>
-            <span>${String(s).padStart(2,'0')}<small>сек</small></span>
-        `;
-        if (diff === 0) clearInterval(interval);
-    }, 1000);
-}
-updateCountdown();
 
 // --- BURGER MENU ---
-const burgerBtn = document.getElementById('burger-btn');
-const mobileNav = document.getElementById('mobile-nav');
-
-if (burgerBtn && mobileNav) {
-    burgerBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('open');
-        document.body.classList.toggle('no-scroll');
-    });
-}
-
-function closeMobileNav() {
-    if (mobileNav) mobileNav.classList.remove('open');
-    document.body.classList.remove('no-scroll');
-}
+// Mobile nav toggling is handled via body.nav-open in inline onclick handlers
 
 // --- CONTACT SHEET ---
 let selectedPlan = '';
@@ -208,8 +169,7 @@ async function handleCallbackSubmit(e) {
     setTimeout(closeContactSheet, 3500);
 }
 
-// Backward compat
-async function handleCallSubmit(e) { return handleCallbackSubmit(e); }
+
 
 // --- FAQ ACCORDION ---
 document.querySelectorAll('.faq-btn').forEach(btn => {
@@ -225,31 +185,7 @@ document.querySelectorAll('.faq-btn').forEach(btn => {
     });
 });
 
-// --- DYNAMIC SCARCITY SPOTS ---
-function updateScarcitySpots() {
-    const spotsEl = document.getElementById('spots-count');
-    if (!spotsEl) return;
 
-    const spotsKey = 'imm_spots_left';
-    let currentSpots = localStorage.getItem(spotsKey);
-
-    // Зменшуємо лише один раз за сесію (а не при кожному оновленні сторінки F5)
-    if (!sessionStorage.getItem('session_counted')) {
-        sessionStorage.setItem('session_counted', 'true');
-        
-        if (!currentSpots) {
-            currentSpots = 8; // Перший візит
-        } else {
-            currentSpots = Math.max(2, parseInt(currentSpots, 10) - 1); // З кожним новим візитом -1, мінімум 2
-        }
-        localStorage.setItem(spotsKey, currentSpots);
-    } else {
-        currentSpots = currentSpots ? parseInt(currentSpots, 10) : 8;
-    }
-
-    spotsEl.textContent = currentSpots;
-}
-updateScarcitySpots();
 
 // --- TIMELINE ANIMATION ---
 const timelineContainer = document.querySelector('.timeline-container');
