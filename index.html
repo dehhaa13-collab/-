@@ -558,77 +558,109 @@
     </div>
 </footer>
 
-<!-- ====== MODAL ====== -->
-<div class="modal" id="booking-modal">
-    <div class="modal__overlay" onclick="closeModal()"></div>
-    <div class="modal__content">
-        <button class="modal-close" onclick="closeModal()">✕</button>
-        
-        <div class="modal__tabs">
-            <div class="modal__slider" id="modal-slider"></div>
-            <button class="modal-tab active" id="tab-call" onclick="switchModalTab('call')">📞 Дзвінок</button>
-            <button class="modal-tab" id="tab-zoom" onclick="switchModalTab('zoom')">💻 Zoom</button>
+<!-- ====== STICKY CTA ====== -->
+<div class="sticky-cta" id="sticky-cta">
+    <button class="sticky-cta__btn" onclick="openContactSheet()">
+        <span class="sticky-cta__icon">💬</span>
+        Зв'язатися з менеджером
+    </button>
+</div>
+
+<!-- ====== CONTACT SHEET ====== -->
+<div class="contact-sheet" id="contact-sheet">
+    <div class="contact-sheet__overlay" onclick="closeContactSheet()"></div>
+    <div class="contact-sheet__panel">
+        <button class="modal-close" onclick="closeContactSheet()">✕</button>
+
+        <!-- View 1: Contact Options -->
+        <div class="cs-view" id="cs-options">
+            <h3 class="cs-title">Оберіть зручний спосіб зв'язку</h3>
+            <div class="cs-plan-label" id="cs-plan-label" style="display:none;"></div>
+
+            <div class="cs-options-list">
+                <a href="https://t.me/help_team_Vrabii" target="_blank" class="contact-option contact-option--featured">
+                    <div class="contact-option__icon contact-option__icon--tg">💬</div>
+                    <div class="contact-option__info">
+                        <strong>Написати в Telegram</strong>
+                        <span>Відповімо протягом 5 хвилин</span>
+                    </div>
+                    <div class="contact-option__arrow">→</div>
+                </a>
+
+                <a href="tel:+40763954998" class="contact-option">
+                    <div class="contact-option__icon">📞</div>
+                    <div class="contact-option__info">
+                        <strong>Зателефонувати нам</strong>
+                        <span>Пн–Сб, 09:00 — 19:00</span>
+                    </div>
+                    <div class="contact-option__arrow">→</div>
+                </a>
+
+                <button class="contact-option" onclick="showCallbackForm()">
+                    <div class="contact-option__icon">🔔</div>
+                    <div class="contact-option__info">
+                        <strong>Замовити дзвінок</strong>
+                        <span>Оберіть зручний час — ми передзвонимо</span>
+                    </div>
+                    <div class="contact-option__arrow">→</div>
+                </button>
+
+                <a href="https://calendar.app.google/7xYBxzE6suDjGAGP8" target="_blank" class="contact-option">
+                    <div class="contact-option__icon">💻</div>
+                    <div class="contact-option__info">
+                        <strong>Запланувати Zoom</strong>
+                        <span>Відеозустріч з командою</span>
+                    </div>
+                    <div class="contact-option__arrow">→</div>
+                </a>
+            </div>
         </div>
 
-        <div class="modal__panes-wrapper">
-            <!-- FORM: CALL -->
-            <div class="modal-pane active" id="pane-call">
-                <h3 class="modal-title">Безкоштовна діагностика</h3>
-                <p class="modal-sub">Наш менеджер зателефонує вам, щоб надати консультацію та обговорити можливі умови співпраці.</p>
-                
-                <form id="call-form" onsubmit="handleCallSubmit(event)">
-                    <div class="form-group">
-                        <label>Ваше ім'я</label>
-                        <input type="text" id="client-name" class="form-input" placeholder="Олена" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Номер телефону</label>
-                        <input type="tel" id="client-phone" class="form-input" placeholder="+380... або +48..." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Зручний час дзвінку</label>
-                        <div class="time-chips">
-                            <label class="time-chip">
-                                <input type="radio" name="client_time" value="Зранку (09:00 - 12:00)">
-                                <span class="chip-content">
-                                    <strong>Зранку</strong>
-                                    <small>09:00 - 12:00</small>
-                                </span>
-                            </label>
-                            <label class="time-chip">
-                                <input type="radio" name="client_time" value="Вдень (12:00 - 16:00)" checked>
-                                <span class="chip-content">
-                                    <strong>Вдень</strong>
-                                    <small>12:00 - 16:00</small>
-                                </span>
-                            </label>
-                            <label class="time-chip">
-                                <input type="radio" name="client_time" value="Ввечері (16:00 - 19:00)">
-                                <span class="chip-content">
-                                    <strong>Ввечері</strong>
-                                    <small>16:00 - 19:00</small>
-                                </span>
-                            </label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn--primary btn--full btn--lg">Підтвердити заявку</button>
-                </form>
-            </div>
+        <!-- View 2: Callback Form -->
+        <div class="cs-view" id="cs-form" style="display: none;">
+            <button class="cs-back" onclick="showContactOptions()">← Назад</button>
+            <h3 class="cs-title">🔔 Замовити дзвінок</h3>
+            <div class="cs-plan-label" id="cs-form-plan-label" style="display:none;"></div>
+            <p class="modal-sub">Залиште номер — наш менеджер зателефонує у зручний для вас час.</p>
 
-            <!-- PANE: ZOOM -->
-            <div class="modal-pane" id="pane-zoom">
-                <h3 class="modal-title">Запланувати Zoom</h3>
-                <p class="modal-sub">Оберіть вільний слот у нашому календарі, щоб узгодити деталі відеодзвінка.</p>
-                <div style="margin: 2rem 0;">
-                    <a href="https://calendar.app.google/7xYBxzE6suDjGAGP8" target="_blank" class="btn btn--primary btn--full btn--lg" style="text-align: center;">📅 Відкрити календар Google</a>
+            <form id="callback-form" onsubmit="handleCallbackSubmit(event)">
+                <div class="form-group">
+                    <label>Ваше ім'я</label>
+                    <input type="text" id="cb-name" class="form-input" placeholder="Олена" required>
                 </div>
-                <p class="modal-sub" style="text-align: center; font-size: 0.9rem;">
-                    Або пишіть напряму: <br>
-                    <a href="https://t.me/help_team_Vrabii" target="_blank" style="color:var(--yellow); font-weight:600;">@help_team_Vrabii</a>
-                </p>
-            </div>
+                <div class="form-group">
+                    <label>Номер телефону</label>
+                    <input type="tel" id="cb-phone" class="form-input" placeholder="+380... або +48..." required>
+                </div>
+                <div class="form-group">
+                    <label>Зручний час дзвінку</label>
+                    <div class="time-chips">
+                        <label class="time-chip">
+                            <input type="radio" name="cb_time" value="Зранку (09:00 - 12:00)">
+                            <span class="chip-content">
+                                <strong>Зранку</strong>
+                                <small>09:00 - 12:00</small>
+                            </span>
+                        </label>
+                        <label class="time-chip">
+                            <input type="radio" name="cb_time" value="Вдень (12:00 - 16:00)" checked>
+                            <span class="chip-content">
+                                <strong>Вдень</strong>
+                                <small>12:00 - 16:00</small>
+                            </span>
+                        </label>
+                        <label class="time-chip">
+                            <input type="radio" name="cb_time" value="Ввечері (16:00 - 19:00)">
+                            <span class="chip-content">
+                                <strong>Ввечері</strong>
+                                <small>16:00 - 19:00</small>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full btn--lg">Підтвердити заявку</button>
+            </form>
         </div>
-
     </div>
 </div>
 

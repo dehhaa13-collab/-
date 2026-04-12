@@ -75,61 +75,75 @@ function closeMobileNav() {
     document.body.classList.remove('no-scroll');
 }
 
-// --- MODAL OPEN / CLOSE ---
+// --- CONTACT SHEET ---
 let selectedPlan = '';
 
+// Backward-compatible: old openModal calls redirect to new contact sheet
 function openModal(type = 'call', plan = '') {
     selectedPlan = plan;
-    const modal = document.getElementById('booking-modal');
-    if (!modal) return;
-
-    modal.classList.add('active');
-    document.body.classList.add('no-scroll');
-
-    const planLabel = document.getElementById('modal-plan-label');
-    if (planLabel && plan) planLabel.textContent = `Тариф: ${plan}`;
-
-    switchModalTab(type);
-}
-
-function switchModalTab(type) {
-    const paneCall = document.getElementById('pane-call');
-    const paneZoom = document.getElementById('pane-zoom');
-    const tabCall  = document.getElementById('tab-call');
-    const tabZoom  = document.getElementById('tab-zoom');
-    const slider   = document.getElementById('modal-slider');
-
-    if (!paneCall || !paneZoom) return;
-
-    if (type === 'zoom') {
-        paneCall.classList.remove('active');
-        paneZoom.classList.add('active');
-        if (tabCall) tabCall.classList.remove('active');
-        if (tabZoom) tabZoom.classList.add('active');
-        if (slider) slider.style.transform = 'translateX(100%)';
+    if (plan) {
+        openContactSheet('form');
     } else {
-        paneCall.classList.add('active');
-        paneZoom.classList.remove('active');
-        if (tabCall) tabCall.classList.add('active');
-        if (tabZoom) tabZoom.classList.remove('active');
-        if (slider) slider.style.transform = 'translateX(0)';
+        openContactSheet();
     }
 }
 
-function closeModal() {
-    const modal = document.getElementById('booking-modal');
-    if (modal) modal.classList.remove('active');
+function openContactSheet(view = 'options') {
+    const sheet = document.getElementById('contact-sheet');
+    if (!sheet) return;
+
+    sheet.classList.add('active');
+    document.body.classList.add('no-scroll');
+
+    if (view === 'form') {
+        showCallbackForm();
+    } else {
+        showContactOptions();
+    }
+    updatePlanLabels();
+}
+
+function closeContactSheet() {
+    const sheet = document.getElementById('contact-sheet');
+    if (sheet) sheet.classList.remove('active');
     document.body.classList.remove('no-scroll');
 }
 
-// Close on overlay click
-document.addEventListener('click', (e) => {
-    if (e.target.id === 'booking-modal') closeModal();
-});
+function closeModal() {
+    closeContactSheet();
+}
+
+function showCallbackForm() {
+    const opts = document.getElementById('cs-options');
+    const form = document.getElementById('cs-form');
+    if (opts) opts.style.display = 'none';
+    if (form) form.style.display = 'block';
+    updatePlanLabels();
+}
+
+function showContactOptions() {
+    const opts = document.getElementById('cs-options');
+    const form = document.getElementById('cs-form');
+    if (opts) opts.style.display = 'block';
+    if (form) form.style.display = 'none';
+}
+
+function updatePlanLabels() {
+    ['cs-plan-label', 'cs-form-plan-label'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (selectedPlan) {
+            el.textContent = `📦 Тариф: ${selectedPlan}`;
+            el.style.display = 'block';
+        } else {
+            el.style.display = 'none';
+        }
+    });
+}
 
 // Close on Escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') closeContactSheet();
 });
 
 // --- SEND TELEGRAM NOTIFICATION ---
@@ -168,13 +182,13 @@ ${selectedPlan ? `📦 Тариф: *${selectedPlan}*` : ''}
     }
 }
 
-// --- HANDLE CALL FORM SUBMIT ---
-async function handleCallSubmit(e) {
+// --- HANDLE CALLBACK FORM SUBMIT ---
+async function handleCallbackSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('button[type="submit"]');
-    const name = document.getElementById('client-name').value.trim();
-    const phone = document.getElementById('client-phone').value.trim();
-    const callTime = document.querySelector('input[name="client_time"]:checked').value;
+    const name = document.getElementById('cb-name').value.trim();
+    const phone = document.getElementById('cb-phone').value.trim();
+    const callTime = document.querySelector('input[name="cb_time"]:checked').value;
 
     btn.textContent = 'Відправляємо...';
     btn.disabled = true;
@@ -182,17 +196,20 @@ async function handleCallSubmit(e) {
     await sendTelegramNotification(name, phone, callTime);
 
     // Show success
-    const callForm = document.getElementById('call-form');
-    callForm.innerHTML = `
+    const formView = document.getElementById('cs-form');
+    formView.innerHTML = `
         <div class="modal-success">
             <div class="success-icon">✓</div>
             <h3>Заявку прийнято!</h3>
-            <p>Наш менеджер зателефонує вам у зручний час для консультації.<br>Очікуйте дзвінка від <strong>Команди Івана Врабія: +40 763 954 998</strong></p>
+            <p>Наш менеджер зателефонує вам у зручний час.<br>Очікуйте дзвінка від <strong>Команди Івана Врабія: +40 763 954 998</strong></p>
         </div>
     `;
 
-    setTimeout(closeModal, 3500);
+    setTimeout(closeContactSheet, 3500);
 }
+
+// Backward compat
+async function handleCallSubmit(e) { return handleCallbackSubmit(e); }
 
 // --- FAQ ACCORDION ---
 document.querySelectorAll('.faq-btn').forEach(btn => {
@@ -271,6 +288,33 @@ if (timelineContainer && timelineProgress) {
         } else {
             timelineProgress.style.height = '0%';
             timelineItems.forEach(item => item.classList.remove('active-step'));
+        }
+    });
+}
+
+// --- STICKY CTA ---
+const stickyCta = document.getElementById('sticky-cta');
+const finalCtaSection = document.querySelector('.final-cta');
+
+if (stickyCta) {
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        // Show after scrolling past hero
+        if (scrollY > 400) {
+            stickyCta.classList.add('visible');
+        } else {
+            stickyCta.classList.remove('visible');
+        }
+
+        // Hide when final CTA is in view
+        if (finalCtaSection) {
+            const rect = finalCtaSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                stickyCta.classList.add('hidden');
+            } else {
+                stickyCta.classList.remove('hidden');
+            }
         }
     });
 }
