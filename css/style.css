@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap&display=swap');
+/* Fonts loaded via <link> in HTML — no duplicate @import needed */
 
 /* ============================================
    DESIGN SYSTEM: BRIGHT EDUCATIONAL + PREMIUM
@@ -60,7 +60,7 @@ button { cursor: pointer; border: none; outline: none; background: transparent; 
 
 /* Typography */
 h1, h2, h3, h4 { font-family: var(--font-head); color: var(--dark); font-weight: 800; text-transform: uppercase; line-height: 1.15; }
-h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 24px; }
+h1 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 24px; }
 h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
 h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 
@@ -129,7 +129,7 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 
 /* ================= HERO ================= */
 .hero { padding: 80px 0 80px; }
-.hero__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.hero__inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
 
 /* Hero content visible immediately — no layout shift on first paint */
 .hero__content { opacity: 1 !important; transform: none !important; }
@@ -156,9 +156,12 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
-.hero__subtitle { font-size: 1.1rem; color: var(--text-muted); margin: 0 0 32px; max-width: 520px; }
-.desktop-br { display: block; }
-.mobile-br { display: none; }
+.hero__subtitle { font-size: 1.05rem; color: var(--text-muted); margin: 0 0 32px; max-width: 540px; line-height: 1.6; }
+.hero__title { text-wrap: balance; }
+.no-scroll { overflow: hidden !important; }
+.btn-rocket { transition: transform 0.3s ease; }
+.btn-rocket:hover { transform: translateY(-5px); }
+.btn-rocket:hover .rocket-pulse { box-shadow: 0 0 0 12px rgba(251, 177, 36, 0.15); transform: scale(1.05); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
 .hero__trust { display: flex; flex-wrap: wrap; gap: 24px; font-size: 0.9rem; font-weight: 600; color: var(--dark-alt); }
 
@@ -549,6 +552,7 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     .hero-phone--after { transform: scale(1.03) rotate(2deg) !important; }
     .hero-arrow { font-size: 1.6rem; }
     .hero__actions, .hero__trust { justify-content: center; }
+    .hero__subtitle { margin-inline: auto; }
     .hero__visual { max-width: 480px; margin: 0 auto; }
 
     /* Grids: 2-col on tablet, 1-col on mobile */
@@ -594,10 +598,8 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     .hero-phone-badge { font-size: 0.6rem; padding: 4px 10px; top: -10px; }
     .stat-card { display: none; }
     .scarcity-badge { margin-bottom: 16px; font-size: 0.78rem; padding: 6px 12px; }
-    .hero__subtitle { font-size: 0.95rem; margin-bottom: 20px; margin-inline: auto; }
-    h1 { font-size: clamp(1.5rem, 6.5vw, 2.3rem); margin-bottom: 16px; }
-    .desktop-br { display: none; }
-    .mobile-br { display: block; }
+    .hero__subtitle { font-size: 0.92rem; margin-bottom: 20px; margin-inline: auto; }
+    h1 { font-size: clamp(1.35rem, 5.8vw, 2rem); margin-bottom: 16px; }
 
     /* Grids */
     .grid-2 { grid-template-columns: 1fr; gap: 20px; }
@@ -629,7 +631,8 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     h2 { font-size: clamp(1.4rem, 5vw, 1.9rem); }
 
     /* Delegation block icon: hide on very small screens */
-    .delegation-icon-wrap { display: none; }
+    .delegation-cta-wrap { width: 100%; }
+    .btn-rocket { flex-direction: column !important; text-align: center !important; gap: 12px !important; }
 
     /* Modal — full screen on mobile Safari */
     .modal__content {
