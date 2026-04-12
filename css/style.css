@@ -658,19 +658,19 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 /* --- TIMELINE (CONVEYOR) --- */
 .timeline-container {
     position: relative;
-    max-width: 600px;
+    max-width: 700px; /* slightly wider for desktop */
     margin: 40px auto 0;
-    padding-left: 32px;
+    /* padding removed, alignment handled by items */
 }
 .timeline-line {
     position: absolute;
-    top: 24px;
-    bottom: 24px;
-    left: 32px; /* Center of the dot */
-    width: 3px;
-    margin-left: -1.5px; /* Perfect centering */
+    top: 40px;
+    bottom: 40px; /* stops before the last dot roughly */
+    left: 40px; /* Center of the line */
+    width: 4px;
+    margin-left: -2px; /* Perfect centering */
     background: rgba(0,0,0,0.06);
-    border-radius: 3px;
+    border-radius: 4px;
     z-index: 1;
 }
 .timeline-line-progress {
@@ -680,16 +680,18 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     width: 100%;
     height: 0%;
     background: linear-gradient(to bottom, var(--primary), var(--red));
-    border-radius: 3px;
-    box-shadow: 0 4px 15px rgba(251, 177, 36, 0.5); /* Laser glow */
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(251, 177, 36, 0.5);
     transition: height 0.1s linear;
 }
 .timeline-item {
     position: relative;
     z-index: 2;
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* Center the dot vertically with the card */
     margin-bottom: 24px;
+    padding-left: 18px; /* 18px + 22px (half of 44px) = 40px, aligns dot center with line */
+    gap: 24px; /* Space between dot and card */
 }
 .timeline-item:last-child {
     margin-bottom: 0;
@@ -706,7 +708,6 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     font-weight: 800;
     font-size: 1.1rem;
     flex-shrink: 0;
-    margin-left: -22px; /* Centered on the 32px line */
     box-shadow: 0 0 0 8px var(--light);
     position: relative;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
@@ -716,14 +717,13 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     transform: scale(1.15);
     background: linear-gradient(135deg, var(--yellow), #ffa700);
     color: var(--dark);
-    box-shadow: 0 0 20px rgba(251, 177, 36, 0.6), 0 0 0 6px rgba(251, 177, 36, 0.15); /* Premium glowing aura */
+    box-shadow: 0 0 20px rgba(251, 177, 36, 0.6), 0 0 0 6px rgba(251, 177, 36, 0.15);
 }
 .timeline-content {
     background-color: var(--white);
-    padding: 24px;
-    border-radius: 20px; /* Softer radius */
+    padding: 24px 32px;
+    border-radius: 20px;
     box-shadow: var(--shadow-sm);
-    margin-left: 20px;
     flex: 1;
     border: 1px solid var(--border);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
@@ -731,13 +731,13 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 .timeline-item:hover .timeline-content,
 .timeline-item.active-step .timeline-content {
     transform: translateX(8px);
-    box-shadow: 0 12px 30px rgba(251, 177, 36, 0.12); /* Gold subtle hover shadow */
+    box-shadow: 0 12px 30px rgba(251, 177, 36, 0.12);
     border-color: rgba(251, 177, 36, 0.6);
 }
 .timeline-title {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 800;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     color: var(--dark);
 }
 .timeline-desc {
@@ -746,17 +746,29 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     line-height: 1.5;
 }
 
-@media(min-width: 768px) {
-    .timeline-container {
-        padding-left: 0;
-        max-width: 650px;
+@media(max-width: 500px) {
+    .timeline-line {
+        left: 28px;
+    }
+    .timeline-item {
+        padding-left: 6px; /* 6 + 22 = 28px */
+        gap: 16px;
+    }
+    .timeline-content {
+        padding: 20px;
     }
 }
 
 .timeline-note {
+    background: linear-gradient(135deg, rgba(251, 177, 36, 0.15), rgba(251, 177, 36, 0.05));
+    border: 1px solid rgba(251, 177, 36, 0.3);
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 20px 24px;
+    border-radius: 16px;
     text-align: center;
-    margin-top: 32px;
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    opacity: 0.75;
+    max-width: 500px;
+    margin: 48px auto 0;
+    box-shadow: 0 10px 30px rgba(251, 177, 36, 0.1);
 }
