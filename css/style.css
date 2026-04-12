@@ -660,15 +660,17 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     position: relative;
     max-width: 600px;
     margin: 40px auto 0;
-    padding-left: 24px;
+    padding-left: 32px;
 }
 .timeline-line {
     position: absolute;
     top: 24px;
     bottom: 24px;
-    left: 24px;
-    width: 2px;
+    left: 32px; /* Center of the dot */
+    width: 3px;
+    margin-left: -1.5px; /* Perfect centering */
     background: rgba(0,0,0,0.06);
+    border-radius: 3px;
     z-index: 1;
 }
 .timeline-line-progress {
@@ -678,6 +680,8 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     width: 100%;
     height: 0%;
     background: linear-gradient(to bottom, var(--primary), var(--red));
+    border-radius: 3px;
+    box-shadow: 0 4px 15px rgba(251, 177, 36, 0.5); /* Laser glow */
     transition: height 0.1s linear;
 }
 .timeline-item {
@@ -691,8 +695,8 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     margin-bottom: 0;
 }
 .timeline-dot {
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     background-color: var(--dark);
     color: var(--yellow);
     border-radius: 50%;
@@ -700,34 +704,35 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     flex-shrink: 0;
-    margin-left: -16px;
-    box-shadow: 0 0 0 6px var(--light);
+    margin-left: -22px; /* Centered on the 32px line */
+    box-shadow: 0 0 0 8px var(--light);
     position: relative;
-    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
 }
 .timeline-item:hover .timeline-dot,
 .timeline-item.active-step .timeline-dot {
     transform: scale(1.15);
-    background-color: var(--primary);
+    background: linear-gradient(135deg, var(--yellow), #ffa700);
     color: var(--dark);
+    box-shadow: 0 0 20px rgba(251, 177, 36, 0.6), 0 0 0 6px rgba(251, 177, 36, 0.15); /* Premium glowing aura */
 }
 .timeline-content {
     background-color: var(--white);
     padding: 24px;
-    border-radius: 16px;
+    border-radius: 20px; /* Softer radius */
     box-shadow: var(--shadow-sm);
-    margin-left: 24px;
+    margin-left: 20px;
     flex: 1;
     border: 1px solid var(--border);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .timeline-item:hover .timeline-content,
 .timeline-item.active-step .timeline-content {
-    transform: translateX(6px);
-    box-shadow: var(--shadow-hover);
-    border-color: rgba(251,177,36,0.6);
+    transform: translateX(8px);
+    box-shadow: 0 12px 30px rgba(251, 177, 36, 0.12); /* Gold subtle hover shadow */
+    border-color: rgba(251, 177, 36, 0.6);
 }
 .timeline-title {
     font-size: 1.1rem;
