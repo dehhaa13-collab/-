@@ -234,3 +234,43 @@ function updateScarcitySpots() {
 }
 updateScarcitySpots();
 
+// --- TIMELINE ANIMATION ---
+const timelineContainer = document.querySelector('.timeline-container');
+const timelineProgress = document.querySelector('.timeline-line-progress');
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+if (timelineContainer && timelineProgress) {
+    window.addEventListener('scroll', () => {
+        const rect = timelineContainer.getBoundingClientRect();
+        const containerTop = rect.top;
+        const containerHeight = rect.height;
+        const windowHeight = window.innerHeight;
+        
+        // Починаємо заповнювати, коли контейнер доходить до 1/2 екрану
+        const scrollStart = windowHeight / 2; 
+        
+        if (containerTop <= scrollStart) {
+            const distance = scrollStart - containerTop;
+            let progress = (distance / containerHeight) * 100;
+            
+            if (progress > 100) progress = 100;
+            if (progress < 0) progress = 0;
+            
+            timelineProgress.style.height = `${progress}%`;
+            
+            // Підсвічуємо елементи
+            timelineItems.forEach(item => {
+                const itemRect = item.getBoundingClientRect();
+                const itemCenter = itemRect.top + itemRect.height / 2;
+                if (itemCenter < windowHeight / 2 + 50) {
+                    item.classList.add('active-step');
+                } else {
+                    item.classList.remove('active-step');
+                }
+            });
+        } else {
+            timelineProgress.style.height = '0%';
+            timelineItems.forEach(item => item.classList.remove('active-step'));
+        }
+    });
+}
