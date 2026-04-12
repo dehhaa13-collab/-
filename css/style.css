@@ -156,7 +156,8 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
-.hero__subtitle { font-size: 1.1rem; color: var(--text-muted); margin: 0 auto 32px; max-width: 520px; }
+.hero__subtitle { font-size: 1.1rem; color: var(--text-muted); margin: 0 0 32px; max-width: 520px; }
+.desktop-br { display: block; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
 .hero__trust { display: flex; flex-wrap: wrap; gap: 24px; font-size: 0.9rem; font-weight: 600; color: var(--dark-alt); }
 
@@ -592,8 +593,9 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
     .hero-phone-badge { font-size: 0.6rem; padding: 4px 10px; top: -10px; }
     .stat-card { display: none; }
     .scarcity-badge { margin-bottom: 16px; font-size: 0.78rem; padding: 6px 12px; }
-    .hero__subtitle { font-size: 0.95rem; margin-bottom: 20px; }
+    .hero__subtitle { font-size: 0.95rem; margin-bottom: 20px; margin-inline: auto; }
     h1 { font-size: clamp(1.7rem, 7vw, 2.5rem); margin-bottom: 16px; }
+    .desktop-br { display: none; }
 
     /* Grids */
     .grid-2 { grid-template-columns: 1fr; gap: 20px; }
