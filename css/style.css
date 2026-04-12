@@ -157,7 +157,7 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
 .hero__subtitle { font-size: 1.05rem; color: var(--text-muted); margin: 0 0 32px; max-width: 540px; line-height: 1.6; }
-.hero__title { text-wrap: balance; }
+.hero__title { text-wrap: balance; text-shadow: 0 4px 14px rgba(30, 30, 36, 0.08); }
 .mobile-br { display: none; }
 .no-scroll { overflow: hidden !important; }
 .btn-rocket { transition: transform 0.3s ease; }
