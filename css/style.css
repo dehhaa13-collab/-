@@ -760,15 +760,10 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
 }
 
 .timeline-note {
-    background: linear-gradient(135deg, rgba(251, 177, 36, 0.15), rgba(251, 177, 36, 0.05));
-    border: 1px solid rgba(251, 177, 36, 0.3);
-    color: var(--dark);
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 20px 24px;
-    border-radius: 16px;
     text-align: center;
-    max-width: 500px;
-    margin: 48px auto 0;
-    box-shadow: 0 10px 30px rgba(251, 177, 36, 0.1);
+    margin-top: 40px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+    font-weight: 500;
 }
