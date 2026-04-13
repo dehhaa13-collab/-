@@ -6,6 +6,18 @@
 const TG_BOT_TOKEN = '8665813635:AAGYX3HpK-SFxPlpeAGBZ8h2hKwJkDMf1us';
 const TG_CHAT_ID = '454550591';
 
+// --- ANALYTICS EVENT HELPER ---
+function trackEvent(eventName, params = {}) {
+    // GA4
+    if (typeof gtag === 'function') {
+        gtag('event', eventName, params);
+    }
+    // Meta Pixel
+    if (typeof fbq === 'function') {
+        fbq('trackCustom', eventName, params);
+    }
+}
+
 // --- HEADER SCROLL ---
 window.addEventListener('scroll', () => {
     const header = document.getElementById('header');
@@ -49,6 +61,8 @@ function openContactSheet(view = 'options') {
 
     sheet.classList.add('active');
     document.body.classList.add('no-scroll');
+
+    trackEvent('contact_sheet_open', { view, plan: selectedPlan || 'none' });
 
     if (view === 'form') {
         showCallbackForm();
@@ -150,6 +164,10 @@ async function handleCallbackSubmit(e) {
 
     await sendTelegramNotification(name, phone, callTime);
 
+    // Track conversion
+    trackEvent('lead_callback', { plan: selectedPlan || 'none', call_time: callTime });
+    if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: selectedPlan || 'callback' });
+
     // Show success
     const formView = document.getElementById('cs-form');
     formView.innerHTML = `
@@ -170,6 +188,9 @@ document.querySelectorAll('.faq-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const item = btn.closest('.faq-item');
         const isOpen = item.classList.contains('open');
+        const question = btn.textContent.replace('+', '').trim();
+
+        if (!isOpen) trackEvent('faq_opened', { question: question.substring(0, 60) });
 
         // Close all
         document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
