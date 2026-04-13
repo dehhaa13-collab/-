@@ -1108,6 +1108,40 @@ h3 { font-size: 1.25rem; margin-bottom: 16px; text-transform: none; }
         height: 48px;
         border-radius: 14px;
     }
+
+    /* Compact form for mobile */
+    .cs-title {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+    .modal-sub {
+        margin-bottom: 16px;
+        font-size: 0.9rem;
+    }
+    .form-group {
+        margin-bottom: 12px;
+    }
+    .form-group label {
+        margin-bottom: 4px;
+        font-size: 0.85rem;
+    }
+    .form-input {
+        padding: 11px 14px;
+    }
+    .time-chips {
+        gap: 6px;
+    }
+    .time-chip .chip-content {
+        padding: 10px 14px;
+    }
+    .cs-back {
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+    #cs-form .btn--lg {
+        padding: 14px;
+        margin-top: 8px;
+    }
 }
 
 /* Desktop: pill-shaped sticky button at bottom-right */
