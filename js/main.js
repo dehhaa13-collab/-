@@ -162,7 +162,7 @@ async function handleCallbackSubmit(e) {
         <div class="modal-success">
             <div class="success-icon">✓</div>
             <h3>Заявку прийнято!</h3>
-            <p>Наш менеджер зателефонує вам у зручний час.<br>Очікуйте дзвінка від <strong>Команди Івана Врабія: +40 763 954 998</strong></p>
+            <p>Наш менеджер зателефонує тобі у зручний час.<br>Очікуй дзвінка від <strong>Команди Івана Врабія: +40 763 954 998</strong></p>
         </div>
     `;
 
