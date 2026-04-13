@@ -3,14 +3,8 @@
 // ============================================
 
 // --- TELEGRAM BOT CONFIG ---
-// 1. Відкрий Telegram, знайди @BotFather
-// 2. Відправ /newbot, дай назву та username
-// 3. Скопіюй токен сюди:
-const TG_BOT_TOKEN = 'ТВІЙ_ТОКЕН_БОТ'; // напр: '7123456789:AAF...'
-// 4. Відправ будь-яке повідомлення своєму боту,
-//    потім відкрий: https://api.telegram.org/bot<ТОКЕН>/getUpdates
-//    знайди "chat":{"id": ... } — це твій CHAT_ID
-const TG_CHAT_ID = 'ТВІЙ_CHAT_ID'; // напр: '123456789'
+const TG_BOT_TOKEN = '8665813635:AAGYX3HpK-SFxPlpeAGBZ8h2hKwJkDMf1us';
+const TG_CHAT_ID = '454550591';
 
 // --- HEADER SCROLL ---
 window.addEventListener('scroll', () => {
