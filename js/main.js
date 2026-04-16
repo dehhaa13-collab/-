@@ -123,6 +123,25 @@ async function sendTelegramNotification(name, phone, callTime) {
     }
 
     const now = new Date().toLocaleString('uk-UA', { timeZone: 'Europe/Kyiv' });
+
+    // Витягуємо UTM-мітки з URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get('utm_source');
+    const utmMedium = urlParams.get('utm_medium');
+    const utmCampaign = urlParams.get('utm_campaign');
+    const utmContent = urlParams.get('utm_content');
+    const utmTerm = urlParams.get('utm_term');
+
+    let utmText = '';
+    if (utmSource || utmMedium || utmCampaign || utmContent || utmTerm) {
+        utmText = '\n\n📊 *UTM Мітки:*';
+        if (utmSource) utmText += `\nSource: ${utmSource}`;
+        if (utmMedium) utmText += `\nMedium: ${utmMedium}`;
+        if (utmCampaign) utmText += `\nCampaign: ${utmCampaign}`;
+        if (utmContent) utmText += `\nContent: ${utmContent}`;
+        if (utmTerm) utmText += `\nTerm: ${utmTerm}`;
+    }
+
     const text = `
 🔔 *НОВА ЗАЯВКА — Фабрика Контенту*
 
@@ -131,7 +150,7 @@ async function sendTelegramNotification(name, phone, callTime) {
 ⏰ Зручний час дзвінку: *${callTime}*
 ${selectedPlan ? `📦 Тариф: *${selectedPlan}*` : ''}
 
-📅 Заявка надійшла: ${now}
+📅 Заявка надійшла: ${now}${utmText}
     `.trim();
 
     try {
