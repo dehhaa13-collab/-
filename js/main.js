@@ -143,7 +143,7 @@ async function sendTelegramNotification(name, phone, callTime) {
     }
 
     const text = `
-🔔 *НОВА ЗАЯВКА — Фабрика Контенту*
+🔔 *НОВА ЗАЯВКА — Контент Завод*
 
 👤 Ім'я: *${name}*
 📞 Телефон: *${phone}*
